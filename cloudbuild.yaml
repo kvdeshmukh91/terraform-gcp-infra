@@ -1,25 +1,31 @@
 steps:
 
-- name: hashicorp/terraform
+# Terraform Init
+- name: hashicorp/terraform:1.6.6
+  dir: env/dev
   entrypoint: sh
   args:
     - -c
     - |
-      cd env/dev
       terraform init
 
-- name: hashicorp/terraform
+# Terraform Plan
+- name: hashicorp/terraform:1.6.6
+  dir: env/dev
   entrypoint: sh
   args:
     - -c
     - |
-      cd env/dev
       terraform plan
 
-- name: hashicorp/terraform
+# Terraform Apply
+- name: hashicorp/terraform:1.6.6
+  dir: env/dev
   entrypoint: sh
   args:
     - -c
     - |
-      cd env/dev
       terraform apply -auto-approve
+
+options:
+ logging: CLOUD_LOGGING_ONLY
