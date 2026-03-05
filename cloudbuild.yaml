@@ -1,0 +1,25 @@
+steps:
+
+- name: hashicorp/terraform
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd env/dev
+      terraform init
+
+- name: hashicorp/terraform
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd env/dev
+      terraform plan
+
+- name: hashicorp/terraform
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd env/dev
+      terraform apply -auto-approve
