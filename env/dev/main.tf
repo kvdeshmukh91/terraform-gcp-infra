@@ -7,6 +7,7 @@ module "vpc" {
   region      = var.region
 }
 
+
 module "spot_vm" {
   source       = "../../modules/spot-vm"
 
